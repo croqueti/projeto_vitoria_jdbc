@@ -22,5 +22,7 @@ public class App {
 
         PessoaDao pessoaDao = new PessoaDao();
         pessoaDao.cadastrarPessoa(pessoaPojo);
+
+        System.out.println("Blu blu");
     }
 }

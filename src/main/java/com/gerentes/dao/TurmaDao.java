@@ -1,4 +1,4 @@
-package com.gerentes.turma;
+package com.gerentes.dao;
 import java.sql.PreparedStatement;
 import com.gerentes.conexao.Conexao;
 
@@ -7,7 +7,7 @@ import com.gerentes.conexao.Conexao;
 
 public class TurmaDao {
     
-    public void cadastrarPessoa(TurmaPojo TurmaPojo) {
+    public void cadastrarTurma(TurmaPojo TurmaPojo) {
 
         Conexao conexao = new Conexao();
 

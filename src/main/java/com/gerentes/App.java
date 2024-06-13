@@ -1,4 +1,4 @@
-package com.meninas_gerentes;
+package com.gerentes;
 
 
 import com.gerentes.dao.PessoaDao;

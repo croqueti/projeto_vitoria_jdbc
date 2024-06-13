@@ -1,4 +1,4 @@
-package com.gerentes.turma;
+package com.gerentes.dao;
 
 public class TurmaPojo {
     private int id;

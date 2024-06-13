@@ -1,4 +1,4 @@
-package com.gerentes.turma;
+package com.gerentes.modelo;
 
 public class Turma {
    private int id;

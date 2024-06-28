@@ -9,6 +9,7 @@ public class App {
     public static void main( String[] args )
     {
      
+        
         Pessoa pessoa = new Pessoa();
         pessoa.setNome("Vitoria");
         pessoa.setIdade(16);
@@ -19,10 +20,30 @@ public class App {
         pessoaPojo.setIdade(pessoa.getIdade());
         pessoaPojo.setEndereco(pessoa.getEndereco());
 
-
+        /*
+        //Cadastrar
         PessoaDao pessoaDao = new PessoaDao();
         pessoaDao.cadastrarPessoa(pessoaPojo);
+        */
 
+        /*
+        //Alterar
+        PessoaDao pessoaDao = new PessoaDao();
+        pessoaDao.alterarPessoa(pessoaPojo);
+        */
+
+
+        /* 
+        //Consultar
+        PessoaDao pessoaDao = new PessoaDao();
+        pessoaDao.consultarPessoa(pessoaPojo);
+        */
+
+        /* 
+        //Remover
+        PessoaDao pessoaDao = new PessoaDao();
+        pessoaDao.removerPessoa(pessoaPojo);
+        */
         System.out.println("Blu blu");
     }
 }

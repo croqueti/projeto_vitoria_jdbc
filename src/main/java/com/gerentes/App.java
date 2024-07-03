@@ -11,39 +11,46 @@ public class App {
      
         
         Pessoa pessoa = new Pessoa();
-        pessoa.setNome("Vitoria");
-        pessoa.setIdade(16);
-        pessoa.setEndereco("Rua Padre Anchieta 171");
+        pessoa.setNome("Norberto");
+        pessoa.setIdade(49);
+        pessoa.setEndereco("Brasil, Cascavel, Paraná");
         
         PessoaPojo pessoaPojo = new PessoaPojo();
         pessoaPojo.setNome(pessoa.getNome());
         pessoaPojo.setIdade(pessoa.getIdade());
         pessoaPojo.setEndereco(pessoa.getEndereco());
+        pessoaPojo.setId(7);
 
-        /*
+
+       /*
         //Cadastrar
         PessoaDao pessoaDao = new PessoaDao();
         pessoaDao.cadastrarPessoa(pessoaPojo);
         */
 
-        /*
+        /* 
         //Alterar
         PessoaDao pessoaDao = new PessoaDao();
         pessoaDao.alterarPessoa(pessoaPojo);
         */
 
 
-        /* 
+        
         //Consultar
         PessoaDao pessoaDao = new PessoaDao();
         pessoaDao.consultarPessoa(pessoaPojo);
-        */
+        
+       
 
         /* 
         //Remover
-        PessoaDao pessoaDao = new PessoaDao();
+        PessoaDao pessoaDao = new PessoaDao();        
         pessoaDao.removerPessoa(pessoaPojo);
         */
-        System.out.println("Blu blu");
+
+
+        /* 
+        System.out.println("Conectado com sucesso");
+        */
     }
 }

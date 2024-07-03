@@ -9,6 +9,8 @@ import com.gerentes.conexao.Conexao;
 
 public class PessoaDao {
     
+
+    //Inserir
     public void cadastrarPessoa(PessoaPojo pessoaPojo) {
 
         Conexao conexao = new Conexao();
@@ -34,8 +36,9 @@ public class PessoaDao {
             System.out.println("Ocorreu u3,m erro com os dados.");
         } 
     } 
+
     //Consultar
-        public void consultarPessoa(PessoaPojo pessoaPojo) {
+    public void consultarPessoa(PessoaPojo pessoaPojo) {
 
         Conexao conexao = new Conexao();
 
@@ -48,56 +51,65 @@ public class PessoaDao {
         try {
             ps = conexao.getConexao().prepareStatement(sql);
 
+            ps.setInt(1, pessoaPojo.getId());
 
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                // Recuperar os dados do ResultSet
-                String nome = rs.getString("nome");
-                String endereco = rs.getString("endereco");
-                int idade = rs.getInt("idade");
-
+               
+                pessoaPojo.setNome(rs.getString(1));    
+                pessoaPojo.setEndereco(rs.getString(2));     
+                pessoaPojo.setIdade(rs.getInt(3));
+                
                 // Exibir os dados (ou processar como necessário)
-                System.out.println("Nome: " + nome);
-                System.out.println("Endereço: " + endereco);
-                System.out.println("Idade: " + idade);
+                //System.out.println("Nome: " + nome);
+                //System.out.println("Endereço: " + endereco);
+                //System.out.println("Idade: " + idade);
             } 
+            System.out.println("Dados consultados com sucesso.");
+            System.out.println(pessoaPojo.toString());
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("Ocorreu um erro ao consultar os dados.");
-        
-      }
-    }   public void alterarPessoa(PessoaPojo pessoaPojo) {
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("Ocorreu um erro ao consultar os dados.");
+            
+        }
+    }   
+    
+    //Alterar
+    public void alterarPessoa(PessoaPojo pessoaPojo) {
 
         Conexao conexao = new Conexao();
 
-        String sql = "update pessoa set nome = ?, endereco = ?, idade = ? where id = ?";
+        String sql = "UPDATE pessoa SET nome = ?, endereco = ?, idade = ? WHERE id = ?";
 
         PreparedStatement ps = null;
 
         try {
             ps = conexao.getConexao().prepareStatement(sql);
-    
+
             ps.setString(1, pessoaPojo.getNome());
             ps.setString(2, pessoaPojo.getEndereco());
             ps.setInt(3, pessoaPojo.getIdade());
-         
+            ps.setInt(4, pessoaPojo.getId());
+     
+            ps.execute();
+            ps.close();
+            System.out.println("Dados da pessoa alterados com sucesso!");
     
-            int linhasAfetadas = ps.executeUpdate();
     
-            if (linhasAfetadas > 0) {
-                System.out.println("Dados da pessoa alterados com sucesso!");
-            } else {
-                System.out.println("Nenhuma pessoa encontrada para o ID fornecido.");
-            }
-    
-        } catch (SQLException e) {
+            } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Ocorreu um erro ao alterar os dados da pessoa.");
- }
+                System.out.println("Ocorreu um erro ao alterar os dados da pessoa.");
+            }
   
-        }    public void removerPessoa(PessoaPojo pessoaPojo) {
+    }    
+        
+        
+        
+    //Remover  
+    public void removerPessoa(PessoaPojo pessoaPojo) {
 
             Conexao conexao = new Conexao();
 
@@ -109,19 +121,16 @@ public class PessoaDao {
                 ps = conexao.getConexao().prepareStatement(sql);
 
 
-                int linhasAfetadas = ps.executeUpdate();
+                ps.setInt(1, pessoaPojo.getId());
 
-                if (linhasAfetadas > 0) {
-                    System.out.println("Pessoa removida com sucesso!");
-                } else {
-                    System.out.println("Nenhuma pessoa encontrada para o ID fornecido.");
-                }
-
+                ps.execute();
+                ps.close();
+    
+                System.out.println("Dados deletados com sucesso!");
             } catch (SQLException e) {
+                // TODO Auto-generated catch block
                 e.printStackTrace();
-                System.out.println("Ocorreu um erro ao remover a pessoa.");
+            }
 
-        }
 }
 }
-
